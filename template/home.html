@@ -1,0 +1,118 @@
+{% load embed_video_tags %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="static/style.css">
+    <title>CamfyVision Video Analytics </title>
+  </head>
+  <body>
+    <h1 style="text-align:center;"> Streaming And Chat Application</h1>
+    <div class="container" >
+        <div>
+            <h1>YouTube Video Streaming</h1>
+          {% for i in obj reversed %}
+          <!-- <h1>Video Streaming</h1> -->
+          <!-- <h6>Video Number {{i}} </h6> -->
+          <!-- <video height=" 200px" width="200px" > -->
+                 {% video i.Video '200x200'  %}
+          <!-- </video> -->
+          {% endfor %}
+        </div>
+<h1> Local Disk Video Streaming</h1>
+        <div class="container">
+            {%  for i in video %}
+                <!-- <h1>{{i.Name}}</h1> -->
+                <video  controls="controls" height="200px" width="200px" muted loop>
+                    <source src="{{ i.video.url }}" type="video/mp4">
+                </video>
+            {% endfor %}
+        </div>
+        <div class="container mt-5">
+          <div class="row">
+              <div class="col-lg-8">
+                  <!-- Post content-->
+                  <article>
+                      <!-- Post header-->
+                      <header class="mb-4">
+                          <!-- Post title-->
+                          <h1 class="fw-bolder mb-1">Welcome to Blog Post!</h1>
+                          <!-- Post meta content-->
+                      {% for feature in features reversed %}
+                      <a   style="text-decoration: none ; color:black;" href="/posts/{{feature.id}}">
+                          <h1 class="fw-bolder mb-1">{{feature.Name}}</h1> 
+                          <div class="text-muted fst-italic mb-2">{{feature.Datecreated}}</div>
+                      </header>
+                      <section class="mb-5">
+                          <p class="fs-5 mb-4">{{feature.Details|truncatewords:20 }} </p>
+                         
+                      {% endfor %}
+                      <h6>Thank You for Reading My BLog</h6>
+                      </section>
+                  </article>
+                      </a>
+                        
+
+        
+        
+        <div class="container">
+            <style>
+            input[type=text], select {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            }
+        
+            input[type=submit] {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            }
+        
+            input[type=submit]:hover {
+            background-color: #45a049;
+            }
+        
+            div {
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+            }
+            </style>
+            <div text-align="center">
+                <h2>Django Chat</h2>
+            </div>
+            <form id="post-form" method="POST" action="checkview">
+                {% csrf_token %}
+                <label>Room Name</label>
+                <input type="text" name="room_name" id="room_name" width="100px" />
+                <label>Username</label>
+                <input type="text" name="username" id="username" width="100px" />
+                <input type="submit" value="Enter Room">
+            </form>
+        </div>     
+<footer>
+    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; YoungKing BLog 2022</p></div>
+   </footer>    
+      
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </body>
+</html>
